@@ -2,7 +2,7 @@
 import { Box, Stack, Tooltip } from '@mui/material';
 // Third Party
 import Uspacy from '@uspacy/sdk';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as ArrowDownIcon } from '../../static/images/arrow-down.svg';
@@ -21,12 +21,13 @@ import { ReactComponent as CallIcon } from '../../static/images/phone.svg';
 import { ReactComponent as MeetingRoomIcon } from '../../static/images/users.svg';
 import { ReactComponent as ZoomIcon } from '../../static/images/zoom.svg';
 // Local
-import { Activity, ActivityPriority, ActivityProvider, ActivityStatus, ActivityType } from './types.d';
+import { Activity, ActivityPriority, ActivityProvider, ActivityStatus, ActivityType } from './types';
 import {
 	ActivityContent,
 	ActivityIcon,
 	ActivityItem,
 	ActivityList,
+	ActivityProviderBadge,
 	ActivityTime,
 	ActivityTitle,
 	AddButton,
@@ -39,7 +40,6 @@ import {
 	Group,
 	Header,
 	IconContainer,
-	MeetingProviderBadge,
 	NextEventContainer,
 	NextEventText,
 	PriorityBadge,
@@ -66,7 +66,7 @@ const getPriorityIcon = (priority: string) => {
 
 const getActivityIcon = (type: string) => {
 	switch (type.toLowerCase()) {
-		case ActivityType.CALL:
+		case 'call':
 			return CallIcon;
 		case ActivityType.MEETING:
 			return MeetingRoomIcon;
@@ -161,8 +161,7 @@ const ActivitiesWidget: FC = () => {
 					created_by: task.created_by,
 					created_at: task.created_at,
 					updated_at: task.updated_at,
-					// @ts-expect-error
-					provider: task.provider,
+					provider: undefined,
 				}));
 
 				const sortedActivities = convertedActivities.sort((a, b) => a.start_time - b.start_time);
@@ -211,9 +210,9 @@ const ActivitiesWidget: FC = () => {
 		);
 	};
 
-	if (loading) return null;
+	const groupedActivities = useMemo(() => groupActivitiesByDate(activities), [activities]);
 
-	const groupedActivities = groupActivitiesByDate(activities);
+	if (loading) return null;
 
 	if (!activities.length) {
 		return (
@@ -223,7 +222,7 @@ const ActivitiesWidget: FC = () => {
 					<IconContainer component={CalendarCheckIcon} />
 				</Header>
 				<EmptyState>
-					<EmptyStateIcon />
+					<EmptyStateIcon color="primary" />
 					<EmptyStateText>{t('noActivitiesMessage')}</EmptyStateText>
 					<AddButton>{t('addActivity')}</AddButton>
 				</EmptyState>
@@ -234,7 +233,7 @@ const ActivitiesWidget: FC = () => {
 	return (
 		<Container>
 			<Header>
-				<Stack flexDirection="row" width="100%">
+				<Stack flexDirection="row" width="100%" alignItems="center">
 					<Title>{t('nextActivities')}</Title>
 					<IconContainer component={CalendarCheckIcon} />
 				</Stack>
@@ -277,7 +276,7 @@ const ActivitiesWidget: FC = () => {
 
 										return (
 											<ActivityItem key={activity.id}>
-												<ActivityIcon type={activity.type} component={ActivitySvgIcon} />
+												<ActivityIcon component={ActivitySvgIcon} />
 
 												<ActivityContent>
 													<Tooltip title={activity.title}>
@@ -297,9 +296,9 @@ const ActivitiesWidget: FC = () => {
 															gap="8px"
 														>
 															{isProviderIcon && (
-																<MeetingProviderBadge>
+																<ActivityProviderBadge>
 																	<ProviderIcon />
-																</MeetingProviderBadge>
+																</ActivityProviderBadge>
 															)}
 															<PriorityBadge type={activity.priority}>
 																<PriorityIcon component={PrioritySvgIcon} />

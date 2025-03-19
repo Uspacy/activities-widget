@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
-import { ActivityPriority } from '../types.d';
+import { ActivityPriority } from '../types';
 
 export const Container = styled('div')({
 	width: '100%',
@@ -64,14 +64,15 @@ export const DateLabel = styled(Badge)<{ type: string }>(({ type }) => {
 		return {
 			display: 'flex',
 			alignItems: 'center',
-			padding: '2px 12px 2px 2px',
+			padding: '4px 12px 4px 4px',
 			color: '#5dcc0e',
 			backgroundColor: '#e9f5e9',
 			borderColor: '#d1e8d2',
+			gap: '4px',
 			'& svg': {
 				fill: '#56ca00',
-				width: '20px',
-				height: '20px',
+				width: '16px',
+				height: '16px',
 			},
 		};
 	}
@@ -79,14 +80,15 @@ export const DateLabel = styled(Badge)<{ type: string }>(({ type }) => {
 		return {
 			display: 'flex',
 			alignItems: 'center',
-			padding: '2px 12px 2px 2px',
+			padding: '4px 12px 4px 4px',
 			color: '#514c59',
 			backgroundColor: '#f4f4f7',
 			borderColor: '#f8f8fa',
+			gap: '4px',
 			'& svg': {
 				fill: '#8c8a97',
-				width: '20px',
-				height: '20px',
+				width: '16px',
+				height: '16px',
 			},
 		};
 	}
@@ -112,7 +114,7 @@ export const ActivityItem = styled('div')({
 	},
 });
 
-export const ActivityIcon = styled(Box)<{ type: string }>({
+export const ActivityIcon = styled(Box)({
 	width: '16px',
 	height: '16px',
 	display: 'flex',
@@ -193,8 +195,8 @@ export const PriorityBadge = styled(RoundedBadge)<{ type: ActivityPriority }>(({
 		borderColor: '#dddddf',
 		color: '#a2a0a5',
 		'& svg': {
-			width: '75%',
-			height: '75%',
+			width: '50%',
+			height: '50%',
 		},
 	};
 
@@ -213,7 +215,7 @@ export const PriorityBadge = styled(RoundedBadge)<{ type: ActivityPriority }>(({
 		case ActivityPriority.LOW:
 			styles.backgroundColor = '#e4f2fd';
 			styles.borderColor = '#bee0fb';
-			styles.color = '#3cade5';
+			styles.color = '#91cff2';
 			break;
 		case ActivityPriority.NOT_HIGH:
 			break;
@@ -222,8 +224,13 @@ export const PriorityBadge = styled(RoundedBadge)<{ type: ActivityPriority }>(({
 
 	return styles;
 });
-export const MeetingProviderBadge = styled(RoundedBadge)({
+export const ActivityProviderBadge = styled(RoundedBadge)({
+	backgroundColor: '#f0f1f1',
 	padding: '2px',
+	'& svg': {
+		width: '100%',
+		height: '100%',
+	},
 });
 
 export const IconContainer = styled(Box)({
@@ -242,6 +249,7 @@ export const ScrollArea = styled('div')({
 	overscrollBehavior: 'contain',
 	paddingTop: '12px',
 	paddingRight: '20px',
+	paddingBottom: '8px',
 });
 export const ActivityList = styled('div')({
 	'& > :not(:last-child)': {
