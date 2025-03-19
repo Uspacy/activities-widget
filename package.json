@@ -10,7 +10,7 @@
     "@reduxjs/toolkit": "^2.6.1",
     "@uspacy/sdk": "0.0.139",
     "@uspacy/store": "0.0.185",
-    "axios": "1.6.0",
+    "axios": "1.8.2",
     "date-fns": "2.30.0",
     "dotenv-webpack": "8.0.1",
     "i18next": "^23.4.6",
@@ -54,7 +54,7 @@
     "prettier": "2.8.8",
     "ts-loader": "9.4.2",
     "typescript": "^5.8.2",
-    "webpack": "5.82.1",
+    "webpack": "5.94.0",
     "webpack-cli": "5.1.1",
     "webpack-dev-server": "4.15.0"
   },
