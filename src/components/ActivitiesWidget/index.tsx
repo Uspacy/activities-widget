@@ -58,21 +58,20 @@ const getPriorityIcon = (priority: string) => {
 			return DoubleArrowDownIcon;
 		case ActivityPriority.NOT_HIGH:
 			return ArrowDownIcon;
-		default: {
+		default:
 			return EqualIcon;
-		}
 	}
 };
 
 const getActivityIcon = (type: string) => {
 	switch (type.toLowerCase()) {
-		case 'call':
+		case ActivityType.CALL:
 			return CallIcon;
 		case ActivityType.MEETING:
 			return MeetingRoomIcon;
 		case ActivityType.EMAIL:
 			return MailIcon;
-		case ActivityType.TASK:
+		case ActivityType.CHAT:
 			return ChatIcon;
 		default:
 			return CalendarCheckIcon;

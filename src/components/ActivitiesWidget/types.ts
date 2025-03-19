@@ -18,7 +18,7 @@ export enum ActivityType {
 	CALL = 'call',
 	MEETING = 'meeting',
 	TASK = 'task',
-	DEADLINE = 'deadline',
+	CHAT = 'chat',
 	EMAIL = 'email',
 }
 
