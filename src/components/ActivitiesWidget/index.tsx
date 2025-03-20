@@ -1,5 +1,7 @@
 // MUI Components and Icons
-import { Box, Stack, Tooltip } from '@mui/material';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Tooltip from '@mui/material/Tooltip';
 // Third Party
 import Uspacy from '@uspacy/sdk';
 import React, { FC, useEffect, useMemo, useState } from 'react';
@@ -36,6 +38,7 @@ import {
 	CountdownTime,
 	DateLabel,
 	EmptyState,
+	EmptyStateMessage,
 	EmptyStateText,
 	Group,
 	Header,
@@ -217,13 +220,21 @@ const ActivitiesWidget: FC = () => {
 		return (
 			<Container>
 				<Header>
-					<Title>{t('nextActivities')}</Title>
-					<IconContainer component={CalendarCheckIcon} />
+					<Stack flexDirection="row" width="100%" alignItems="center">
+						<Title>{t('nextActivities')}</Title>
+						<IconContainer component={CalendarCheckIcon} />
+					</Stack>
 				</Header>
 				<EmptyState>
 					<EmptyStateIcon color="primary" />
-					<EmptyStateText>{t('noActivitiesMessage')}</EmptyStateText>
-					<AddButton>{t('addActivity')}</AddButton>
+
+					<Stack gap="8px">
+						<EmptyStateText>
+							<EmptyStateMessage>{t('noActivitiesMessage')}</EmptyStateMessage>
+							<EmptyStateMessage>{t('noActivitiesCTA')}</EmptyStateMessage>
+						</EmptyStateText>
+						<AddButton>{t('addActivity')}</AddButton>
+					</Stack>
 				</EmptyState>
 			</Container>
 		);
@@ -274,7 +285,7 @@ const ActivitiesWidget: FC = () => {
 										const isProviderIcon = !!activity.provider && !!ProviderIcon;
 
 										return (
-											<ActivityItem key={activity.id}>
+											<ActivityItem key={activity.id} href={`/crm/tasks/${activity.id}`}>
 												<ActivityIcon component={ActivitySvgIcon} />
 
 												<ActivityContent>
@@ -299,9 +310,11 @@ const ActivitiesWidget: FC = () => {
 																	<ProviderIcon />
 																</ActivityProviderBadge>
 															)}
-															<PriorityBadge type={activity.priority}>
-																<PriorityIcon component={PrioritySvgIcon} />
-															</PriorityBadge>
+															<Tooltip title={t(`priority.${activity.priority}`)}>
+																<PriorityBadge type={activity.priority}>
+																	<PriorityIcon component={PrioritySvgIcon} />
+																</PriorityBadge>
+															</Tooltip>
 														</Stack>
 													</Stack>
 												</ActivityContent>

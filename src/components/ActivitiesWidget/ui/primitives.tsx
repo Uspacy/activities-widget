@@ -11,7 +11,7 @@ export const Container = styled('div')({
 	borderRadius: '12px',
 });
 export const Content = styled('div')({
-	padding: '0 0 20px 20px',
+	padding: '0 0 12px 20px',
 	borderBottomLeftRadius: 'inherit',
 	borderBottomRightRadius: 'inherit',
 });
@@ -95,7 +95,7 @@ export const DateLabel = styled(Badge)<{ type: string }>(({ type }) => {
 	return {};
 });
 
-export const ActivityItem = styled('div')({
+export const ActivityItem = styled('a')({
 	display: 'flex',
 	flexDirection: 'row',
 	alignItems: 'center',
@@ -107,6 +107,7 @@ export const ActivityItem = styled('div')({
 	borderRadius: '8px',
 	flex: 'none',
 	alignSelf: 'stretch',
+	textDecoration: 'none',
 	flexGrow: 0,
 	'&:hover': {
 		backgroundColor: '#f5f5f5',
@@ -156,7 +157,6 @@ export const EmptyState = styled('div')({
 	flexDirection: 'column',
 	alignItems: 'center',
 	justifyContent: 'center',
-	gap: '16px',
 	padding: '24px',
 	textAlign: 'center',
 });
@@ -165,9 +165,11 @@ export const AddButton = styled(Button)({
 	textTransform: 'unset',
 });
 
-export const EmptyStateText = styled('p')({
+export const EmptyStateText = styled('div')({
 	color: '#666',
 	fontSize: '14px',
+});
+export const EmptyStateMessage = styled('p')({
 	margin: 0,
 });
 
@@ -244,7 +246,8 @@ export const IconContainer = styled(Box)({
 });
 
 export const ScrollArea = styled('div')({
-	height: '400px',
+	maxHeight: '400px',
+	height: '100%',
 	overflowY: 'auto',
 	overscrollBehavior: 'contain',
 	paddingTop: '12px',
