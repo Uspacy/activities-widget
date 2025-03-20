@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/703.9d969204.chunk.js","mappings":"kIAEA,MAIA,EAJ2BA,IACnB,I","sources":["webpack://container/./src/components/Settings/index.tsx"],"sourcesContent":["import React from 'react';\n\nconst Settings: React.FC = () => {\n\treturn null;\n};\n\nexport default Settings;\n"],"names":["Settings"],"sourceRoot":""}
