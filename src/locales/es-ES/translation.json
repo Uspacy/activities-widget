@@ -1,5 +1,20 @@
 {
   "birthdays": "Cumpleaños",
   "today": "Hoy",
-  "congratulate": "Felicitar"
+  "tomorrow": "Mañana",
+  "next": "Siguientes",
+  "congratulate": "Felicitar",
+  "nextActivities": "Próximas actividades",
+  "nextEventIn": "Próximo evento en",
+  "minutes": "min",
+  "noActivitiesMessage": "Aquí se mostrarán las actividades próximas.",
+  "noActivitiesCTA": "¡Crea una actividad ahora!",
+  "addActivity": "Añadir actividad",
+  "priority": {
+    "low": "Baja",
+    "neutral": "Neutral",
+    "notHigh": "Media",
+    "high": "Alta",
+    "veryHigh": "Muy alta"
+  }
 }

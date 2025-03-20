@@ -1,5 +1,20 @@
 {
   "birthdays": "Urodziny",
   "today": "Dzisiaj",
-  "congratulate": "Złóż życzenia"
+  "tomorrow": "Jutro",
+  "next": "Następne",
+  "congratulate": "Pogratulować",
+  "nextActivities": "Nadchodzące zadania",
+  "nextEventIn": "Następne wydarzenie za",
+  "minutes": "min",
+  "noActivitiesMessage": "Tutaj pojawią się nadchodzące zadania.",
+  "noActivitiesCTA": "Utwórz zadanie teraz!",
+  "addActivity": "Dodaj zadanie",
+  "priority": {
+    "low": "Niski",
+    "neutral": "Neutralny",
+    "notHigh": "Średni",
+    "high": "Wysoki",
+    "veryHigh": "Bardzo wysoki"
+  }
 }
