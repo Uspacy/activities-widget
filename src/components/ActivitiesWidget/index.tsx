@@ -1,4 +1,5 @@
 // MUI Components and Icons
+import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
@@ -131,6 +132,8 @@ const getStartAndEndDayTimestamp = (date: Date): [number, number] => {
 
 const ActivitiesWidget: FC = () => {
 	const { t } = useTranslation();
+	const theme = useTheme();
+
 	const [activities, setActivities] = useState<Activity[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [minutesUntilNext, setMinutesUntilNext] = useState(0);
@@ -226,7 +229,7 @@ const ActivitiesWidget: FC = () => {
 					</Stack>
 				</Header>
 				<EmptyState>
-					<EmptyStateIcon color="primary" />
+					<EmptyStateIcon color={theme.palette.primary.main} />
 
 					<Stack gap="8px">
 						<EmptyStateText>
