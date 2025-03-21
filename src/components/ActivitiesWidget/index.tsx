@@ -235,8 +235,7 @@ const ActivitiesWidget: FC = () => {
 						<EmptyStateText>
 							<EmptyStateMessage>{t('noActivitiesMessage')}</EmptyStateMessage>
 
-							{/* !! TODO: Uncomment when there is a route for creating a task */}
-							{/* <EmptyStateMessage>{t('noActivitiesCTA')}</EmptyStateMessage> */}
+							<EmptyStateMessage>{t('noActivitiesCTA')}</EmptyStateMessage>
 						</EmptyStateText>
 
 						{/* !! TODO: Uncomment when there is a route for creating a task */}
