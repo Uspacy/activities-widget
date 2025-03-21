@@ -219,7 +219,7 @@ const ActivitiesWidget: FC = () => {
 
 	if (loading) return null;
 
-	if (!activities.length) {
+	if (activities.length) {
 		return (
 			<Container>
 				<Header>
@@ -234,7 +234,9 @@ const ActivitiesWidget: FC = () => {
 					<Stack gap="8px">
 						<EmptyStateText>
 							<EmptyStateMessage>{t('noActivitiesMessage')}</EmptyStateMessage>
-							<EmptyStateMessage>{t('noActivitiesCTA')}</EmptyStateMessage>
+
+							{/* !! TODO: Uncomment when there is a route for creating a task */}
+							{/* <EmptyStateMessage>{t('noActivitiesCTA')}</EmptyStateMessage> */}
 						</EmptyStateText>
 
 						{/* !! TODO: Uncomment when there is a route for creating a task */}
