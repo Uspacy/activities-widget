@@ -33,7 +33,7 @@ import {
 	ActivityProviderBadge,
 	ActivityTime,
 	ActivityTitle,
-	AddButton,
+	// AddButton,
 	Container,
 	Content,
 	CountdownTime,
@@ -219,7 +219,7 @@ const ActivitiesWidget: FC = () => {
 
 	if (loading) return null;
 
-	if (!activities.length) {
+	if (activities.length) {
 		return (
 			<Container>
 				<Header>
@@ -234,9 +234,12 @@ const ActivitiesWidget: FC = () => {
 					<Stack gap="8px">
 						<EmptyStateText>
 							<EmptyStateMessage>{t('noActivitiesMessage')}</EmptyStateMessage>
+
 							<EmptyStateMessage>{t('noActivitiesCTA')}</EmptyStateMessage>
 						</EmptyStateText>
-						<AddButton>{t('addActivity')}</AddButton>
+
+						{/* !! TODO: Uncomment when there is a route for creating a task */}
+						{/* <AddButton>{t('addActivity')}</AddButton> */}
 					</Stack>
 				</EmptyState>
 			</Container>
