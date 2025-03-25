@@ -9,20 +9,15 @@ i18n.use(initReactI18next)
 		resourcesToBackend((language: string, namespace: string, callback) => {
 			import(`./locales-widget/${language}/${namespace}.json`)
 				.then((resources) => {
-					console.log(resources, 'resources');
 					callback(null, resources);
 				})
 				.catch((error) => {
-					console.log(error, 'error');
 					callback(error, null);
 				});
 		}),
 	)
 	.init({
 		fallbackLng: 'uk',
-		react: {
-			useSuspense: true,
-		},
 	});
 
 export default i18n;
