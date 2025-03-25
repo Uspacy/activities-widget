@@ -8,7 +8,9 @@ import { IProps } from './types';
 
 export const App: React.FC<IProps> = ({ userSettings }) => {
 	useEffect(() => {
-		i18n.changeLanguage(userSettings?.lang);
+		if (!!userSettings?.lang) {
+			i18n.changeLanguage(userSettings?.lang);
+		}
 	}, [userSettings?.lang]);
 
 	return (
