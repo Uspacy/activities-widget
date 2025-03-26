@@ -130,6 +130,14 @@ const getStartAndEndDayTimestamp = (date: Date): [number, number] => {
 	return [timestampStart, timestampEnd];
 };
 
+const getTodayAndTomorrowTimestamps = (): [today: Date, tomorrow: Date] => {
+	const today = new Date();
+	const tomorrow = new Date(today);
+	tomorrow.setDate(tomorrow.getDate() + 1);
+
+	return [today, tomorrow];
+};
+
 const ActivitiesWidget: FC = () => {
 	const { t } = useTranslation();
 	const theme = useTheme();
@@ -137,19 +145,21 @@ const ActivitiesWidget: FC = () => {
 	const [activities, setActivities] = useState<Activity[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [minutesUntilNext, setMinutesUntilNext] = useState(0);
+	const [today, tomorrow] = getTodayAndTomorrowTimestamps();
 
 	useEffect(() => {
 		const fetchTodayActivities = async () => {
 			try {
 				const today = new Date();
 				const [startOfDay, endOfDay] = getStartAndEndDayTimestamp(today);
+				const [startOfDayTomorrow, endOfDayTomorrow] = getStartAndEndDayTimestamp(tomorrow);
 
 				const uspacyClient = Uspacy.createInstance();
 				const {
 					data: { data: tasks },
 				} = await uspacyClient.crmTasksService.getTasksWithFilters({
 					list: 1000,
-					start_time: [[startOfDay, endOfDay]],
+					start_time: [[startOfDay, endOfDayTomorrow]],
 				});
 
 				// Convert tasks to Activity type
@@ -219,7 +229,7 @@ const ActivitiesWidget: FC = () => {
 
 	if (loading) return null;
 
-	if (activities.length) {
+	if (!activities.length) {
 		return (
 			<Container>
 				<Header>
