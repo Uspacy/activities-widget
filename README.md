@@ -48,8 +48,6 @@ const Settings: React.FC<IProps> = () => {
 export default Settings;
 ```
 
-You need to create a `.env` file and add the necessary environment variables as specified in the `.env.template` file. The template file contains basic variables required for working with this template. You can add any additional variables required for your application to function properly.
-
 `./app` is the module that will be displayed in the Uspacy interface at the specified location.<br />
 `./settings` is the module that will be displayed on the marketplace page in the application settings section, where users add configurations required for your application to work correctly.
 

@@ -145,14 +145,13 @@ const ActivitiesWidget: FC = () => {
 	const [activities, setActivities] = useState<Activity[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [minutesUntilNext, setMinutesUntilNext] = useState(0);
-	const [today, tomorrow] = getTodayAndTomorrowTimestamps();
 
 	useEffect(() => {
 		const fetchTodayActivities = async () => {
 			try {
-				const today = new Date();
-				const [startOfDay, endOfDay] = getStartAndEndDayTimestamp(today);
-				const [startOfDayTomorrow, endOfDayTomorrow] = getStartAndEndDayTimestamp(tomorrow);
+				const [today, tomorrow] = getTodayAndTomorrowTimestamps();
+				const [startOfDay] = getStartAndEndDayTimestamp(today);
+				const [, endOfDayTomorrow] = getStartAndEndDayTimestamp(tomorrow);
 
 				const uspacyClient = Uspacy.createInstance();
 				const {
