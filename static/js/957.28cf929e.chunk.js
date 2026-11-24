@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcontainer=self.webpackChunkcontainer||[]).push([[957],{5957:(e,n,s)=>{s.r(n),s.d(n,{App:()=>l,default:()=>g});var r=s(1527),t=s.n(r),a=s(8504),c=s(5424),u=s(6712),i=s(4848);const l=e=>{let{userSettings:n}=e;return(0,r.useEffect)((()=>{c.A.changeLanguage(n?.lang)}),[n?.lang]),(0,i.jsx)(t().Suspense,{children:(0,i.jsx)(a.I18nextProvider,{i18n:c.A,children:(0,i.jsx)(u.A,{})})})},g=l}}]);
+//# sourceMappingURL=957.28cf929e.chunk.js.map
